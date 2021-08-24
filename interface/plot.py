@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider
-
+from matplotlib import style
+plt.style.use('dark_background')
 from file_handling import import_recorded
 
 
@@ -10,8 +11,9 @@ def plot_data(plot_d):
     N = len(channel_names)  # number of pins
     n = len(data_channels[0])
     
-    show_min, show_max = -0.2, 1.2
-
+    #show_min, show_max = -0.2, 1.2
+    show_min, show_max = -0.1, 1.1
+    
     all_axis = list()
     for i in range(N):
         all_axis.append(plt.subplot(N, 1, 1 + i))
@@ -22,22 +24,22 @@ def plot_data(plot_d):
         ys = ys[:-1]
         plt.title(channel_names[i], loc='left')
         plt.plot(xs, ys)
-        plt.axis([0, 10, show_min, show_max])
-
+        plt.axis([0, 60, show_min, show_max])
+        
 
     axpos = plt.axes([0.2, 0.01, 0.65, 0.03])
-    spos = Slider(axpos, 'Pos', 0.1, n)
-
-
+    spos = Slider(axpos, 'Time (s)', 0.1, n)
+    
     def update(val):
         pos = spos.val
         for ax in all_axis:
             ax.axis([pos, pos + 10, show_min, show_max])
 
 
-    spos.on_changed(update)
+    spos.on_changed(update) 
+    
     plt.show()
-
+   
 
 def plot_saved_file():
     filename = 'data.csv'

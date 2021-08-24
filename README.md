@@ -11,8 +11,8 @@ A simple logic analyzer, which can be used with any Arduino and Python3.
 * You can then plot with `plot.py`
 
 Hints:
-* You can choose your pins in the Arduino sketch_
-* You can choose your sampling rate in the Arduino sketch_
+* You can choose your pins in the Arduino sketch
+* You can choose your sampling rate in the Arduino sketch
 
 ## Example
 
@@ -23,4 +23,5 @@ This is how an example application could look like:
 The resulting plot could look like this:
 
 ![plot](img/plot.png)
-___
+
+
